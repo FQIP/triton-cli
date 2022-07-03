@@ -1,0 +1,35 @@
+{
+  "name": "triton-cli",
+  "version": "0.0.1-beta1",
+  "description": "A node cli",
+  "main": "index.js",
+  "type": "module",
+  "bin": "./bin/index.js",
+  "files": [
+    "bin",
+    "docs",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "FQIP",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "chalk-pipe": "^5.1.1",
+    "ejs": "^3.1.8",
+    "execa": "^6.1.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^9.0.0",
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0",
+    "listr": "^0.14.3",
+    "path": "^0.12.7",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
+  }
+}

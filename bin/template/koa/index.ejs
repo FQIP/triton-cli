@@ -1,0 +1,49 @@
+import Koa from "koa";
+<% if (middleware.static) { %>
+  import serve from "koa-static";
+<% } %>
+<% if (middleware.views) { %>
+  import views from "koa-views";
+<% } %>
+<% if (middleware.router) { %>
+  import Router from "koa-router";
+<% } %>
+<% if (middleware.body) { %>
+  import body from "koa-body";
+<% } %>
+import path from "path";
+
+const app = new Koa();
+const __dirname = path.resolve();
+
+<% if (middleware.static) { %>
+  app.use(serve(__dirname + "./static"));
+<% } %>
+
+<% if (middleware.views) { %>
+  app.use(
+    views(__dirname + "/views", {
+      extension: "pug",
+    })
+  );
+<% } %>
+
+<% if (middleware.body) { %>
+  app.use(
+    body({
+      multipart: true,
+    })
+  );
+<% } %>
+
+<% if (middleware.router) { %>
+  const router = new Router();
+  router.get("/", (ctx) => {
+    ctx.body = "hello Koa";
+  });
+  app.use(router.routes());
+<% } %>
+
+app.listen(<%= port %> , () => {
+  console.log("启动成功，端口号：<%= port %>");
+});
